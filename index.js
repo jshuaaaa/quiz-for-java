@@ -80,6 +80,7 @@ start.addEventListener("click", function() {
                 c.setAttribute('style', 'display:none;')
                 d.setAttribute('style', 'display:none;')
                 timer.setAttribute("style", "display:none;")
+                submitScore.setAttribute("style", "display:flex;") 
                 scoreGetter.textContent = "Your score was: " + playerScore
                 time = 99
                 questionNumber = 1
@@ -120,6 +121,7 @@ checkA.addEventListener("click", function(){
             wrong.setAttribute('style', 'display: flex;')
             wrong.textContent = 'Wrong!'
             playerScore -= 1
+            time -= 3
 
         }
     })
@@ -140,6 +142,7 @@ checkB.addEventListener("click", function(){
             wrong.setAttribute('style', 'display: flex;')
             wrong.textContent = 'Wrong!'
             playerScore -= 1
+            time -= 3
 
         }
 
@@ -158,6 +161,7 @@ checkC.addEventListener("click", function(){
             wrong.setAttribute('style', 'display: flex;')
             wrong.textContent = 'Wrong!'
             playerScore -= 1
+            time -= 3
             
 
         }
@@ -175,6 +179,7 @@ checkD.addEventListener("click", function(){
             wrong.setAttribute('style', 'display: flex;')
             wrong.textContent = 'Wrong!'
             playerScore -= 1
+            time -= 3
 
         }
     })
@@ -232,9 +237,6 @@ function questionChecker(event) {
 
     }
 
-    if(questionNumber === 6) {
-        submitScore.setAttribute("style", "display:flex;") 
-    }
 
 }
 
