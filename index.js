@@ -12,7 +12,6 @@ var initialsOfUser = document.getElementById('initials-value')
 var leaderboardButton = document.getElementById('leaderboard-button')
 var scoreGetter = document.getElementById('scoreGetter')
 var displayLeaderboard = document.getElementById('leaderboard')
-var leaderboardData = document.getElementById('leaderboard-data')
 
 var checkA = document.getElementById('checkA')
 var checkB = document.getElementById('checkB')
@@ -27,11 +26,6 @@ var playerScore = 0
 var leaderboard = []
 
 var time = 99
-init()
-function init() {
-    JSON.parse(localStorage.getItem("leaderboard"));
-}
-
 function storeData(e) {
     e.preventDefault();
 
@@ -41,11 +35,24 @@ function storeData(e) {
         score: playerScore
     }
 
-    leaderboard.push(player)
-    localStorage.setItem("leaderboard", JSON.stringify(leaderboard))
+    let storedPlayer = localStorage.getItem("storedInitials") || '[]';
+    storedPlayer = JSON.parse(storedPlayer)
+    storedPlayer.push(player)
+    localStorage.setItem("storedInitials", JSON.stringify(storedPlayer))
     
-    displayLeaderboard.setAttribute("style", "displaty:flex")
-    leaderboardData.textContent = storedInitials
+    for (var i = 0; i < storedPlayer.length; i++) {
+        var t = storedPlayer[i].intitials;
+        var w = storedPlayer[i].score;
+        
+        //Grabs different properties from our player object
+    
+        var li = document.createElement("li");
+        li.textContent = t + " got a score of: " + w
+        li.setAttribute("data-index", i);
+        console.log('running')
+        displayLeaderboard.appendChild(li);
+      }
+    
 
 }
 
