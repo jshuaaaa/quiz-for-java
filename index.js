@@ -12,6 +12,7 @@ var initialsOfUser = document.getElementById('initials-value')
 var leaderboardButton = document.getElementById('leaderboard-button')
 var scoreGetter = document.getElementById('scoreGetter')
 var displayLeaderboard = document.getElementById('leaderboard')
+var leaderboardContainer = document.getElementById('leaderboard-container')
 
 var checkA = document.getElementById('checkA')
 var checkB = document.getElementById('checkB')
@@ -20,6 +21,7 @@ var checkD = document.getElementById('checkD')
 
 var questionNumber = 1
 var playerScore = 0
+// Defines score and question Number
 
 
 
@@ -39,23 +41,25 @@ function storeData(e) {
     storedPlayer = JSON.parse(storedPlayer)
     storedPlayer.push(player)
     localStorage.setItem("storedInitials", JSON.stringify(storedPlayer))
+    //Stores player score
     
     for (var i = 0; i < storedPlayer.length; i++) {
         var t = storedPlayer[i].intitials;
         var w = storedPlayer[i].score;
         
-        //Grabs different properties from our player object
+ 
     
         var li = document.createElement("li");
         li.textContent = t + " got a score of: " + w
         li.setAttribute("data-index", i);
         console.log('running')
         displayLeaderboard.appendChild(li);
+        // Prints player score on HTML
       }
     
 
 }
-
+//Event listener to start quiz and check times
 start.addEventListener("click", function() {
     var timeStart = setInterval(() => {
         start.setAttribute("style", "display:none;")
@@ -105,11 +109,11 @@ start.addEventListener("click", function() {
         
 
 
-    }, 1000);
+    }, 100);
 })
 
 
-
+//Select different options in the quiz 
 checkA.addEventListener("click", function(){
         if(questionNumber === 1) {
 
@@ -119,13 +123,13 @@ checkA.addEventListener("click", function(){
 
         }  else {
             wrong.setAttribute('style', 'display: flex;')
-            wrong.textContent = 'Wrong!'
+            wrong.textContent = 'Wrong! You lost 3 seconds and 1 point!'
             playerScore -= 1
             time -= 3
 
         }
     })
-
+//Select different options in the quiz 
 checkB.addEventListener("click", function(){
         if(questionNumber === 2) {
             questionNumber = questionNumber + 1
@@ -140,7 +144,7 @@ checkB.addEventListener("click", function(){
             playerScore += 3
         } else {
             wrong.setAttribute('style', 'display: flex;')
-            wrong.textContent = 'Wrong!'
+            wrong.textContent = 'Wrong! You lost 3 seconds and 1 point!'
             playerScore -= 1
             time -= 3
 
@@ -149,7 +153,7 @@ checkB.addEventListener("click", function(){
        
     })
 
-
+//Select different options in the quiz 
 checkC.addEventListener("click", function(){
         if(questionNumber === 5) {
             questionNumber = questionNumber + 1
@@ -159,7 +163,7 @@ checkC.addEventListener("click", function(){
 
         }  else {
             wrong.setAttribute('style', 'display: flex;')
-            wrong.textContent = 'Wrong!'
+            wrong.textContent = 'Wrong! You lost 3 seconds and 1 point!'
             playerScore -= 1
             time -= 3
             
@@ -167,7 +171,7 @@ checkC.addEventListener("click", function(){
         }
     })
 
-
+//Select different options in the quiz 
 checkD.addEventListener("click", function(){
         if(questionNumber === 4) {
             questionNumber = questionNumber + 1
@@ -177,13 +181,13 @@ checkD.addEventListener("click", function(){
 
         }  else {
             wrong.setAttribute('style', 'display: flex;')
-            wrong.textContent = 'Wrong!'
+            wrong.textContent = 'Wrong! You lost 3 seconds and 1 point!'
             playerScore -= 1
             time -= 3
 
         }
     })
-
+//Checks what question it is on and changes HTML based on question number
 function questionChecker(event) {
     if(questionNumber === 1) {
         questionTitle.textContent = 'What does "document.getElementbyId" do in javascript?'

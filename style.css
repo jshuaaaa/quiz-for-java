@@ -60,3 +60,7 @@ form button {
     background-color: purple;
     font-weight: bold;
 }
+
+#leaderboard-container {
+    justify-content: center;
+}
